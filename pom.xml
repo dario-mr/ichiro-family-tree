@@ -12,15 +12,13 @@
 
     <groupId>com.dario</groupId>
     <artifactId>ichiro-family-tree</artifactId>
-    <version>${project.version}</version>
+    <version>0.0.5</version>
 
     <name>Ichiro Family Tree</name>
     <description>API that returns the family tree of our doggy Ichiro Go Takimisou</description>
 
     <properties>
         <java.version>11</java.version>
-        <project.version>0.0.4</project.version>
-
         <springdoc.version>1.6.9</springdoc.version>
     </properties>
 
@@ -79,7 +77,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/Sayre9/ichiro-family-tree</url>
+            <url>https://maven.pkg.github.com/dario-mr/ichiro-family-tree</url>
         </repository>
     </distributionManagement>
 </project>
