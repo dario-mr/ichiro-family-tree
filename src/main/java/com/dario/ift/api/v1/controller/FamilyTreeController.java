@@ -5,7 +5,6 @@ import com.dario.ift.api.v1.controller.dto.HttpErrorDto;
 import com.dario.ift.core.service.FamilyTreeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Max;
@@ -44,7 +44,7 @@ public class FamilyTreeController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = HttpErrorDto.class)))
     })
-    public DogDto getFamilyTree(@Parameter @Min(2) @Max(8) int generations) {
+    public DogDto getFamilyTree(@RequestParam @Min(2) @Max(8) int generations) {
         return objectMapper.convertValue(familyTreeService.getFamilyTree(generations), DogDto.class);
     }
 
