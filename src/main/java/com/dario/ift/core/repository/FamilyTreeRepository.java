@@ -18,7 +18,7 @@ public class FamilyTreeRepository {
 
     // TODO currently up to generation 6...
     public Dog getFamilyTree() {
-        return buildDog(1, "Ichiro Go Takimisou", M, RED, RU, LocalDate.of(2021, 10, 14), "", "http://www.shiba-pedigree.ru/details.php?id=79238",
+        return buildDog(1, "Ichiro Go Takimisou", M, RED, RU, LocalDate.of(2021, 10, 14), "https://ilmegliosito.altervista.org/ichiro/IMG_8417.jpg", "http://www.shiba-pedigree.ru/details.php?id=79238",
                 buildDog(2, "Triumf Sibiri W'vip Go Takimisou", M, RED, RU, LocalDate.of(2018, 4, 29), "http://www.shiba-pedigree.ru/pics/medium/2554/med_5ce5526a54e75.JPG", "http://www.shiba-pedigree.ru/details.php?id=72439",
                         buildDog(3, "Hikay's Takes The Lead", M, RED, RU, LocalDate.of(2016, 8, 16), "http://www.shiba-pedigree.ru/pics/medium/2581/med_5901bac984d1a.jpg", "http://www.shiba-pedigree.ru/details.php?id=70124",
                                 buildDog(4, "Copperdots One To Watch At Hikay's", M, RED, US, null, "", "http://www.shiba-pedigree.ru/details.php?id=69029",
