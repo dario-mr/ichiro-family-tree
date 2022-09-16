@@ -27,6 +27,7 @@ public class ApiDocumentationConfig {
                         .version("1.0"));
     }
 
+    // Add api-key to swagger requests header
     @Bean
     public OperationCustomizer apiDocHeaders() {
         return (Operation operation, HandlerMethod handlerMethod) -> {
@@ -40,11 +41,6 @@ public class ApiDocumentationConfig {
 
             return operation;
         };
-    }
-
-    @Bean
-    public MvcConfig mvcConfig() {
-        return new MvcConfig();
     }
 
 }

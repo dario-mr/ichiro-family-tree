@@ -1,7 +1,7 @@
 spring:
   application.name: ichiro-family-tree
   config.import: optional:file:.env[.properties] # enable scanning of .env file for environment variables
-server.port: ${PORT:8080} # use PORT set by Heroku, otherwise 8080
+server.port: 5000 # Elastic Beanstalk port
 
 springdoc:
   swagger-ui.path: swagger-ui
