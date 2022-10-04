@@ -43,4 +43,9 @@ public class ApiDocumentationConfig {
         };
     }
 
+    @Bean
+    public MvcConfig mvcConfig() {
+        return new MvcConfig();
+    }
+
 }

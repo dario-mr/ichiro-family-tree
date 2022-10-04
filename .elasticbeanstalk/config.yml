@@ -1,4 +1,0 @@
-# deploy instructions for aws Elastic Beanstalk CLI
-
-deploy:
-  artifact: target/ichiro-family-tree-0.0.5.jar
