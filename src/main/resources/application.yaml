@@ -1,7 +1,19 @@
+server.port: 8080
+
 spring:
   application.name: ichiro-family-tree
   config.import: optional:file:.env[.properties] # enable scanning of .env file for environment variables
-server.port: 8080
+  jpa:
+    database: Oracle
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+  datasource:
+    url: jdbc:oracle:thin:@ichiro_high
+    username: USER
+    password: ${DB_PASSWORD}
+    hikari:
+      connection-init-sql: call DBMS_APPLICATION_INFO.SET_MODULE ('${spring.application.name}', null)
+      maximum-pool-size: 10
 
 springdoc:
   swagger-ui.path: swagger-ui
