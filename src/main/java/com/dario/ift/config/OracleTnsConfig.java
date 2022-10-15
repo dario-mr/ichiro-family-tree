@@ -33,10 +33,10 @@ public class OracleTnsConfig implements ApplicationListener<ApplicationPreparedE
     }
 
     private boolean configureFromTnsAdmin() {
-        String zooplusTnsAdmin = System.getenv(TNS_ADMIN);
-        log.info("Retrieved Oracle TNS admin from system property '{}' with value '{}'", TNS_ADMIN, zooplusTnsAdmin);
-        if (hasText(zooplusTnsAdmin)) {
-            System.setProperty(ORACLE_TNS_ADMIN, zooplusTnsAdmin);
+        String tnsAdmin = System.getenv(TNS_ADMIN);
+        log.info("Retrieved Oracle TNS admin from system property '{}' with value '{}'", TNS_ADMIN, tnsAdmin);
+        if (hasText(tnsAdmin)) {
+            System.setProperty(ORACLE_TNS_ADMIN, tnsAdmin);
             return true;
         }
         return false;
