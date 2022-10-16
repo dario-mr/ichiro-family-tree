@@ -1,19 +1,9 @@
 server.port: 8080
 
 spring:
+  profiles.active: ${IFT_PROFILE:prod}
   application.name: ichiro-family-tree
   config.import: optional:file:.env[.properties] # enable scanning of .env file for environment variables
-  jpa:
-    database: Oracle
-    database-platform: org.hibernate.dialect.Oracle12cDialect
-    show-sql: true
-  datasource:
-    url: jdbc:oracle:thin:@ichiro_high
-    username: USER
-    password: ${DB_PASSWORD}
-    hikari:
-      connection-init-sql: call DBMS_APPLICATION_INFO.SET_MODULE ('${spring.application.name}', null)
-      maximum-pool-size: 10
 
 springdoc:
   swagger-ui.path: swagger-ui
@@ -23,3 +13,26 @@ springdoc:
 api.key:
   header: api-key
   value: ${API_KEY}
+
+---
+spring:
+  config.activate.on-profile: dev
+  jpa:
+    database: H2
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS ICHIRO\;
+    username: sa
+    password:
+---
+spring:
+  config.activate.on-profile: prod
+  jpa:
+    database: Oracle
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+  datasource:
+    url: jdbc:oracle:thin:@ichiro_high
+    username: USER
+    password: ${DB_PASSWORD}
