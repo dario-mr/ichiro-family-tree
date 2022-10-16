@@ -28,17 +28,17 @@ public class DogRepository {
     // TODO remove
     public List<Dog> findAll() {
         return dogJpaRepository.findAll().stream()
-                .map(this::map)
+                .map(this::toDomain)
                 .collect(toList());
     }
 
     // TODO add cache
     public Optional<Dog> findByName(String name) {
         return dogJpaRepository.findByName(name)
-                .map(this::map);
+                .map(this::toDomain);
     }
 
-    private Dog map(DogEntity entity) {
+    private Dog toDomain(DogEntity entity) {
         return Dog.builder()
                 .name(entity.getName())
                 .gender(entity.getGender())
@@ -48,8 +48,8 @@ public class DogRepository {
                 .imageUrl(entity.getImageUrl())
                 .profileUrl(entity.getProfileUrl())
                 .generation(entity.getGeneration())
-                .mother(entity.getMother() == null ? null : map(entity.getMother()))
-                .father(entity.getFather() == null ? null : map(entity.getFather()))
+                .mother(entity.getMother() == null ? null : toDomain(entity.getMother()))
+                .father(entity.getFather() == null ? null : toDomain(entity.getFather()))
                 .build();
     }
 
