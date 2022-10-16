@@ -34,5 +34,5 @@ spring:
     show-sql: true
   datasource:
     url: jdbc:oracle:thin:@ichiro_high
-    username: USER
+    username: ICHIRO
     password: ${DB_PASSWORD}

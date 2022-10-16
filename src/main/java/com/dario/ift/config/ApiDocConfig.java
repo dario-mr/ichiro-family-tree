@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
 @Configuration
-public class ApiDocumentationConfig {
+public class ApiDocConfig {
 
     @Value("${api.key.header}")
     private String apiKeyHeader;

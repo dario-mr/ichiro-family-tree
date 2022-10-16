@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
 
 @ControllerAdvice
@@ -17,6 +18,12 @@ public class ErrorController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorDto validationException(ConstraintViolationException ex) {
+        return new ErrorDto(ex.getMessage(), "");
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ErrorDto EntityNotFoundException(EntityNotFoundException ex) {
         return new ErrorDto(ex.getMessage(), "");
     }
 

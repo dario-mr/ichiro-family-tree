@@ -42,7 +42,8 @@ public class FamilyTreeController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Family tree successfully retrieved"),
             @ApiResponse(responseCode = "400", description = "Bad Request"),
-            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = HttpErrorDto.class)))
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = HttpErrorDto.class))),
+            @ApiResponse(responseCode = "404", description = "Not found")
     })
     public DogDto getFamilyTree(@RequestParam @Min(2) @Max(8) int generations) {
         return objectMapper.convertValue(familyTreeService.getFamilyTree(generations), DogDto.class);

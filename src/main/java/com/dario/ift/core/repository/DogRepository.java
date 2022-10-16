@@ -4,17 +4,54 @@ import com.dario.ift.core.domain.Color;
 import com.dario.ift.core.domain.Country;
 import com.dario.ift.core.domain.Dog;
 import com.dario.ift.core.domain.Gender;
+import com.dario.ift.core.repository.jpa.DogJpaRepository;
+import com.dario.ift.core.repository.jpa.entity.DogEntity;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import static com.dario.ift.core.domain.Color.*;
 import static com.dario.ift.core.domain.Country.*;
 import static com.dario.ift.core.domain.Gender.F;
 import static com.dario.ift.core.domain.Gender.M;
+import static java.util.stream.Collectors.toList;
 
 @Repository
-public class FamilyTreeRepository {
+public class DogRepository {
+
+    @Resource
+    private DogJpaRepository dogJpaRepository;
+
+    // TODO remove
+    public List<Dog> findAll() {
+        return dogJpaRepository.findAll().stream()
+                .map(this::map)
+                .collect(toList());
+    }
+
+    // TODO add cache
+    public Optional<Dog> findByName(String name) {
+        return dogJpaRepository.findByName(name)
+                .map(this::map);
+    }
+
+    private Dog map(DogEntity entity) {
+        return Dog.builder()
+                .name(entity.getName())
+                .gender(entity.getGender())
+                .country(entity.getCountry())
+                .dateOfBirth(entity.getDateOfBirth())
+                .color(entity.getColor())
+                .imageUrl(entity.getImageUrl())
+                .profileUrl(entity.getProfileUrl())
+                .generation(entity.getGeneration())
+                .mother(entity.getMother() == null ? null : map(entity.getMother()))
+                .father(entity.getFather() == null ? null : map(entity.getFather()))
+                .build();
+    }
 
     // TODO currently up to generation 6...
     public Dog getFamilyTree() {
