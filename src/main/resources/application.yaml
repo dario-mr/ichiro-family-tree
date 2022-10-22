@@ -20,18 +20,19 @@ spring:
   jpa:
     database: H2
     database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
     show-sql: true
   datasource:
     url: jdbc:h2:mem:testdb;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS ICHIRO\;
     username: sa
     password:
+  h2.console.enabled: true
 ---
 spring:
   config.activate.on-profile: prod
   jpa:
     database: Oracle
     database-platform: org.hibernate.dialect.Oracle12cDialect
-    show-sql: true
   datasource:
     url: jdbc:oracle:thin:@ichiro_high
     username: ICHIRO
