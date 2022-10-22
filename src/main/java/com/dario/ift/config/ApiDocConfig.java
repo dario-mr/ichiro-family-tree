@@ -13,13 +13,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
 @Configuration
-public class ApiDocumentationConfig {
+public class ApiDocConfig {
 
     @Value("${api.key.header}")
     private String apiKeyHeader;
 
     @Bean
-    public OpenAPI apiDocConfig() {
+    public OpenAPI config() {
         return new OpenAPI()
                 .info(new Info()
                         .title("Ichiro Family Tree")

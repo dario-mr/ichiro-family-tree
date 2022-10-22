@@ -2,12 +2,15 @@ package com.dario.ift.core.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Builder
 @Data
-public class Dog {
+@EqualsAndHashCode(of = {"name", "dateOfBirth"})
+public class Dog implements Serializable {
 
     String name;
     String gender;
@@ -20,4 +23,5 @@ public class Dog {
 
     Dog mother;
     Dog father;
+
 }
