@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Builder
 @Data
 @EqualsAndHashCode(of = {"name", "dateOfBirth"})
-public class Dog {
+public class Dog implements Serializable {
 
     String name;
     String gender;
@@ -22,4 +23,5 @@ public class Dog {
 
     Dog mother;
     Dog father;
+
 }

@@ -7,6 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @Table(name = "DOG", schema = "ICHIRO")
 @Builder
@@ -18,6 +21,7 @@ import java.util.Objects;
 public class DogEntity {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "DOG_ID")
     private Long id;
 
@@ -45,11 +49,11 @@ public class DogEntity {
     @Column(name = "DOG_GENERATION")
     private Integer generation;
 
-    @OneToOne
+    @OneToOne(cascade = ALL)
     @JoinColumn(name = "DOG_MOTHER_ID", referencedColumnName = "DOG_ID")
     private DogEntity mother;
 
-    @OneToOne
+    @OneToOne(cascade = ALL)
     @JoinColumn(name = "DOG_FATHER_ID", referencedColumnName = "DOG_ID")
     private DogEntity father;
 

@@ -2,6 +2,7 @@ package com.dario.ift.api.v1.controller;
 
 import com.dario.ift.api.v1.controller.dto.DogDto;
 import com.dario.ift.api.v1.controller.dto.HttpErrorDto;
+import com.dario.ift.core.domain.Dog;
 import com.dario.ift.core.service.FamilyTreeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,8 +46,9 @@ public class FamilyTreeController {
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = HttpErrorDto.class))),
             @ApiResponse(responseCode = "404", description = "Not found")
     })
-    public DogDto getFamilyTree(@RequestParam @Min(2) @Max(8) int generations) {
-        return objectMapper.convertValue(familyTreeService.getFamilyTree(generations), DogDto.class);
+    public DogDto getFamilyTree(@RequestParam @Min(2) @Max(6) int generations) {
+        Dog ichiro = familyTreeService.getDog("Ichiro Go Takimisou", generations);
+        return objectMapper.convertValue(ichiro, DogDto.class);
     }
 
 }

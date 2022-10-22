@@ -19,7 +19,7 @@ public class ApiDocConfig {
     private String apiKeyHeader;
 
     @Bean
-    public OpenAPI apiDocConfig() {
+    public OpenAPI config() {
         return new OpenAPI()
                 .info(new Info()
                         .title("Ichiro Family Tree")
