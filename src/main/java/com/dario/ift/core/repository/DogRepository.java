@@ -3,19 +3,19 @@ package com.dario.ift.core.repository;
 import com.dario.ift.core.domain.Dog;
 import com.dario.ift.core.repository.jpa.DogJpaRepository;
 import com.dario.ift.core.repository.jpa.entity.DogEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 
 import static com.dario.ift.config.CacheConfig.DOG_FIND_BY_NAME;
 
 @Repository
+@RequiredArgsConstructor
 public class DogRepository {
 
-    @Resource
-    private DogJpaRepository dogJpaRepository;
+    private final DogJpaRepository dogJpaRepository;
 
     @Cacheable(DOG_FIND_BY_NAME)
     public Optional<Dog> findByName(String name) {
